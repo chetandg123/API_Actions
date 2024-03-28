@@ -1,22 +1,20 @@
-name: Python package
-
-on: [push]
+name: CI
+on:
+  push:
+    branches: [ main]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Python
-        # This is the version of the action for setting up Python, not the Python version.
-        uses: actions/setup-python@v4
-        with:
-          # Semantic version range syntax or exact version of a Python version
-          python-version: '3.10'
-          # Optional - x64 or x86 architecture, defaults to x64
-          architecture: 'x64'
-      # You can test your matrix by printing the current Python version
-      - name: Display Python version
-        run: python3 -c "import sys; print(sys.version)"
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Katalon Studio Github Action
+      uses: katalon-studio/katalon-studio-github-action@v2
+      with:
+          version: '9.3.0'
+          projectPath: '${{ github.workspace }}'
+          args: '-noSplash  -retry=0 -testSuitePath="Test Suites/Run_Suite" -browserType="Web Service" -executionProfile="default" -apiKey="fb7016b2-47ee-4d22-9e60-85b5b47f7d6b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true'
+         
