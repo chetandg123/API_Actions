@@ -16,5 +16,5 @@ jobs:
       with:
           version: '9.3.0'
           projectPath: '${{ github.workspace }}'
-          args: '-noSplash  -retry=0 -testSuitePath="Test Suites/Run_Suite" -browserType="Web Service" -executionProfile="default" -apiKey="fb7016b2-47ee-4d22-9e60-85b5b47f7d6b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true'
+          args: './katalonc -noSplash -runMode=console -projectPath="/home/chetan/Katalon Studio/API_Actions/API_Actions.prj" -retry=0 -testSuitePath="Test Suites/Run_Suite" -browserType="Web Service" -executionProfile="default" -apiKey="fb7016b2-47ee-4d22-9e60-85b5b47f7d6b" --config -proxy.auth.option=NO_PROXY -proxy.system.option=NO_PROXY -proxy.system.applyToDesiredCapabilities=true -webui.autoUpdateDrivers=true'
          
